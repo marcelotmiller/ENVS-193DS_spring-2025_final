@@ -16,6 +16,7 @@ library(scales)
 library(here)
 library(dplyr)
 library(readr)
+library(lubridate)
 ```
 
 \[#1\]
@@ -49,3 +50,15 @@ Statistical summary:
 A significant difference in mean annual nitrogen load (kg yr\^-1) between nitrogen source categories (urban land, atmospheric deposition, fertilizer, wastewater treatment, and grasslands) (test = one-way ANOVA, F=(), p= 0.02, alpha= 0.05, df= ()). Post-hoc comparisons reveal that \_ sites are those that differ significantly, corresponding to \_..., effect sizes which show the level of influence.
 
 #2
+
+```{r}
+sst_clean <- read.csv("data/sst.csv") |> 
+  mutate(data = ymd(date)) |> 
+  mutate(year = year(data), 
+         month = month(data, label = TRUE, abbr = TRUE)) |> 
+  filter(year >= 2018, year <= 2023) |> 
+  group_by(site, year, month) |> 
+  summarize(mean_monthly_sst = mean(temp, na.rm = TRUE),
+            .groups= "drop") |> 
+  mutate(month = factor(month, orderd = TRUE))
+```

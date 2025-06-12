@@ -8,7 +8,7 @@ execute:
 
 GitHub REPO: <https://github.com/marcelotmiller/ENVS-193DS_spring-2025_final.git>
 
-```{r}
+```{r error=FALSE, message=FALSE}
 #loading in all the presumed needed packages
 library(tidyverse)
 library(flextable)
@@ -56,7 +56,7 @@ A significant difference in mean annual nitrogen load (kg yr\^-1) between nitrog
 
 #2\]
 
-```{r}
+```{r error=FALSE, message=FALSE}
 sst_clean <- read.csv("../data/sst.csv") |> #load in data and creating new name for clean data
   mutate(data = ymd(date)) |> 
   mutate(year = year(data), 
@@ -71,11 +71,11 @@ sst_clean |>
   slice_sample(n= 5) #check 5 random sample rows to match hw directions
 ```
 
-```{r}
+```{r error=FALSE, message=FALSE}
 str(sst_clean) #view the column
 ```
 
-```{r}
+```{r error=FALSE, message=FALSE}
 sst_plot_data <- sst_clean |> #new name to categorize data for plot purposes
   group_by(year, month) |> 
   summarize(mean_sst = mean(mean_monthly_sst, na.rm = TRUE), 
@@ -157,7 +157,7 @@ model.sel(model1, model2, model3, model4)
 
 The best model based on Akaike’s Information Criteria is model 2, or the model that includes both season and edge distance as predictor variables in the Swift Parrot nest box occupancy.
 
-```{r}
+```{r error=FALSE, message=FALSE}
 #visualizations for each model to see best
 newdata <- expand.grid(
   edge.distance = seq(0, 900, by = 50),
@@ -187,14 +187,14 @@ Figure 1. Modeled plot predictors showing Swift Parrot next box occupancy as a f
 
 j.)
 
-```{r}
+```{r error=FALSE, message=FALSE}
 testpoints <- expand.grid(
   edge.distance = c(0, 900),
   season = c("2016", "2019")
 )
 
 testpreds <- predict(model2, newdata = testpoints, type = "link", se.fit = TRUE)
-testpoints$fit <- plogis(testpreds$fit)
+testpoints$fit <- plogis(testpreds$fit) #predicting the probabilities
 testpoints$lower <- plogis(testpreds$fit - 1.96 * testpreds$se.fit)
 testpoints$upper <- plogis(testpreds$fit + 1.96 * testpreds$se.fit)
 

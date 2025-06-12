@@ -2,11 +2,11 @@
 title: "quartodoc"
 format: html
 editor: visual
-warning: FALSE
-message: FALSE
+execute:
+  working-dir: ..
 ---
 
-GitHub REPO: <https://github.com/marcelotmiller/ENVS-193DS_spring-2025_final.git>
+GitHub REPO: <https://github.com/marcelotmiller/ENVS-193DS_spring-2025_final.git>
 
 ```{r}
 #loading in all the presumed needed packages
@@ -24,7 +24,7 @@ library(janitor)
 library(DHARMa)
 ```
 
-\[#1\]
+#1\]
 
 a.)
 
@@ -34,7 +34,7 @@ I part 2, we can assume that an ANOVA test was run to test for significant diffe
 
 b.)
 
-In addition to mentioning the test type, incorporating a post-hoc comparison, like Turkey's HSD, would specify which predictor variables had significant differences in nitrogen load. Doing so would offer more insight to which predictor variables are worth noting, rather than leaving the ANOVA p-value result of 0.02 left up to the bare interpretation that at least one group differs.
+In addition to mentioning the test type, incorporating a post-hoc comparison, like Turkey’s HSD, would specify which predictor variables had significant differences in nitrogen load. Doing so would offer more insight to which predictor variables are worth noting, rather than leaving the ANOVA p-value result of 0.02 left up to the bare interpretation that at least one group differs.
 
 Another detail that can enhance the results is to include an effect size. Including an effect size estimate, such as an eta-squared for the ANOVA test, would help interpreters understand how large the differences that were deemed significant are, and whether the results are to be considered meaningful in actual practice.
 
@@ -52,12 +52,12 @@ Biological narrative: Nitrogen loads are seen to vary across several sources, wi
 
 Statistical summary:
 
-A significant difference in mean annual nitrogen load (kg yr\^-1) between nitrogen source categories (urban land, atmospheric deposition, fertilizer, wastewater treatment, and grasslands) (test = one-way ANOVA, F=(), p= 0.02, alpha= 0.05, df= ()). Post-hoc comparisons reveal that \_ sites are those that differ significantly, corresponding to \_..., effect sizes which show the level of influence.
+A significant difference in mean annual nitrogen load (kg yr\^-1) between nitrogen source categories (urban land, atmospheric deposition, fertilizer, wastewater treatment, and grasslands) (test = one-way ANOVA, F=(), p= 0.02, alpha= 0.05, df= ()). Post-hoc comparisons reveal that \_ sites are those that differ significantly, corresponding to \_…, effect sizes which show the level of influence.
 
-#2
+#2\]
 
 ```{r}
-sst_clean <- read.csv("data/sst.csv") |> #load in data and creating new name for clean data
+sst_clean <- read.csv("../data/sst.csv") |> #load in data and creating new name for clean data
   mutate(data = ymd(date)) |> 
   mutate(year = year(data), 
          month = month(data, label = TRUE, abbr = TRUE)) |> 
@@ -69,13 +69,13 @@ sst_clean <- read.csv("data/sst.csv") |> #load in data and creating new name for
 
 sst_clean |> 
   slice_sample(n= 5) #check 5 random sample rows to match hw directions
+```
 
+```{r}
 str(sst_clean) #view the column
 ```
 
 ```{r}
- #looked up this function to prevent an error from blocking
-
 sst_plot_data <- sst_clean |> #new name to categorize data for plot purposes
   group_by(year, month) |> 
   summarize(mean_sst = mean(mean_monthly_sst, na.rm = TRUE), 
@@ -120,7 +120,7 @@ c.) The years/seasons that are compared in this study are 2016 and 2019. The sea
 d.)
 
 | Model \# | Season Included (yes/no) | Distance to Forest Edge Included (yes/no) | Model Description |
-|------------------|------------------|------------------|-------------------|
+|----|----|----|----|
 | 1 | No | No | Null model (intercept only) |
 | 2 | Yes | Yes | Saturated model (season + distance) |
 | 3 | Yes | No | Season only |
@@ -136,7 +136,6 @@ model1 <- glm(sp ~ 1, data = occdist, family = binomial) #null
 model2 <- glm(sp ~ season + edge.distance, data = occdist, family = binomial) #full model
 model3 <- glm(sp ~ season, data = occdist, family = binomial) #only season
 model4 <- glm(sp ~ edge.distance, data = occdist, family = binomial) #only distance
-
 ```
 
 f.)
@@ -147,7 +146,6 @@ simulateResiduals(model1) |> plot()
 simulateResiduals(model2) |> plot()
 simulateResiduals(model3) |> plot()
 simulateResiduals(model4) |> plot()
-
 ```
 
 g.)
@@ -155,12 +153,9 @@ g.)
 ```{r}
 #model comparison with AIC
 model.sel(model1, model2, model3, model4)
-
 ```
 
-The best model based on Akaike's Information Criteria is model 2, or the model that includes both season and edge distance as predictor variables in the Swift Parrot nest box occupancy.
-
-h.)
+The best model based on Akaike’s Information Criteria is model 2, or the model that includes both season and edge distance as predictor variables in the Swift Parrot nest box occupancy.
 
 ```{r}
 #visualizations for each model to see best
@@ -184,12 +179,11 @@ ggplot(newdata, aes(x = edge.distance, y= lfit, color = season)) +
   theme(panel.grid = element_blank()) +
   scale_color_manual(values = c("2016" = "skyblue", "2019"= "brown2")) + 
   scale_fill_manual(values = c("2016" = "skyblue", "2019"= "brown2"))
-
 ```
 
 i.)
 
-Figure 1. Modeled plot predictors showing Swift Parrot next box occupancy as a function of distance from the forest edge in 2019 and 2019. The predicted probabilities from a binomial GLM using season and edge distances as constant predictor variables. Confidence intervals are shown as shaded regions above and below lines. Data source: Stojanovic, Dejan et al. (2021). *Do nest boxes breed the target species or its competitors?* \[Dataset\]. Dryad. <https://doi.org/10.5061/dryad.83bk3j9sb>
+Figure 1. Modeled plot predictors showing Swift Parrot next box occupancy as a function of distance from the forest edge in 2019 and 2019. The predicted probabilities from a binomial GLM using season and edge distances as constant predictor variables. Confidence intervals are shown as shaded regions above and below lines. Data source: Stojanovic, Dejan et al. (2021). *Do nest boxes breed the target species or its competitors?* \[Dataset\]. Dryad. <https://doi.org/10.5061/dryad.83bk3j9sb>
 
 j.)
 
@@ -205,7 +199,6 @@ testpoints$lower <- plogis(testpreds$fit - 1.96 * testpreds$se.fit)
 testpoints$upper <- plogis(testpreds$fit + 1.96 * testpreds$se.fit)
 
 print(testpoints)
-
 ```
 
 k.)
@@ -216,4 +209,4 @@ We see that the Swift Parrot nest box occupancy was dependent on the season and 
 
 a.)
 
-The first difference that I can spot is that the visualization used in homework 2 is a box plot format, whereas the affective version in homework 3 is a scatter plot with different trend lines. Additionally, the plot in homework 2 lacks color completely, while the affective visualization utilizes color as one of the key differentiating factors. Although aesthetically the two plots are quite different, the data represented is certaintly very similar. The initial drastic difference in caffeine consumption means lowered by the time of more data collection in homework 3, but the noticeable trend of a higher consumption for exam/homework days is seen on both plots. The mean is consistently higher in homework/exam days, for the exception of one portion of the plot in the affective visualization which contains an overlap of trendlines. This is due to the affective visualization having a more complete set of data than that displayed in homework two, specifically representing the mean caffeine consumption trend line as an average spread out over the duration of the entire 1.5 month study period instead of homework 2's display of two single mean amounts for each category. The biggest change that I made to my affective visualization was to switch the data/plot appearance in order to create a more lively feel to the display, as the viewer could track the spikes in consumption or smooth curve of intake.
+The first difference that I can spot is that the visualization used in homework 2 is a box plot format, whereas the affective version in homework 3 is a scatter plot with different trend lines. Additionally, the plot in homework 2 lacks color completely, while the affective visualization utilizes color as one of the key differentiating factors. Although aesthetically the two plots are quite different, the data represented is certaintly very similar. The initial drastic difference in caffeine consumption means lowered by the time of more data collection in homework 3, but the noticeable trend of a higher consumption for exam/homework days is seen on both plots. The mean is consistently higher in homework/exam days, for the exception of one portion of the plot in the affective visualization which contains an overlap of trendlines. This is due to the affective visualization having a more complete set of data than that displayed in homework two, specifically representing the mean caffeine consumption trend line as an average spread out over the duration of the entire 1.5 month study period instead of homework 2’s display of two single mean amounts for each category. The biggest change that I made to my affective visualization was to switch the data/plot appearance in order to create a more lively feel to the display, as the viewer could track the spikes in consumption or smooth curve of intake.

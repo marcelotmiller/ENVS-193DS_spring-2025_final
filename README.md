@@ -12,4 +12,5 @@ This final assignment includes four parts, ranging from conceptual knowledge, re
 ## Rendered Output
 
 -The rendered HTML document can be found at:
-https://marcelotmiller.github.io/ENVS-193DS_spring-2025_final/quartodoc.html
+https://marcelotmiller.github.io/ENVS-193DS_spring-2025_final/code/quartodoc.html
+

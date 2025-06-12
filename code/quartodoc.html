@@ -71,10 +71,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="fullcontent">
+<body>
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section">1]</a></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">2]</a></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2">3]</a></li>
+  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3">4]</a></li>
+  </ul>
+</nav>
+</div>
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -112,7 +123,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DHARMa)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>#1]</p>
+<section id="section" class="level1">
+<h1>1]</h1>
 <p>a.)</p>
 <p>In part 1, based on wording including correlation and the use of continuous predictor and response variables, we know that a correlation test was used. The most likely test is a Pearson correlation coefficient, which was used to gauge the strength and direction of the proposed linear relationship between the distance from headwater (km) and the annual total nitrogen load (kg yr^-1).</p>
 <p>I part 2, we can assume that an ANOVA test was run to test for significant differences in average nitrogen load (kg yr^-1) over multiple predictor variables. Other than being a multivariable, we can conclude that an ANOVA test was used because of the specific wording of having no difference in average, and the use of a p-value.</p>
@@ -127,7 +139,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Biological narrative: Nitrogen loads are seen to vary across several sources, with specific variables contributing more to the nitrogen accumulation in the San Joaquin River Delta than others. Such findings reveal that there is a disproportionate level of land use contributing to nitrogen pollution in proximity to the watershed.</p>
 <p>Statistical summary:</p>
 <p>A significant difference in mean annual nitrogen load (kg yr^-1) between nitrogen source categories (urban land, atmospheric deposition, fertilizer, wastewater treatment, and grasslands) (test = one-way ANOVA, F=(), p= 0.02, alpha= 0.05, df= ()). Post-hoc comparisons reveal that _ sites are those that differ significantly, corresponding to _…, effect sizes which show the level of influence.</p>
-<p>#2]</p>
+</section>
+<section id="section-1" class="level1">
+<h1>2]</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>sst_clean <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"../data/sst.csv"</span>) <span class="sc">|&gt;</span> <span class="co">#load in data and creating new name for clean data</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">data =</span> <span class="fu">ymd</span>(date)) <span class="sc">|&gt;</span> </span>
@@ -145,11 +159,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code># A tibble: 5 × 4
   site    year month mean_monthly_sst
   &lt;chr&gt;  &lt;dbl&gt; &lt;ord&gt;            &lt;dbl&gt;
-1 SITE12  2018 Feb               14.8
-2 SITE6   2022 Feb               14.5
-3 SITE9   2021 Apr               12.6
-4 SITE8   2019 Aug               15.8
-5 SITE14  2022 May               12.3</code></pre>
+1 SITE19  2020 Feb               14.1
+2 SITE2   2022 Jun               14.8
+3 SITE12  2020 Mar               15.2
+4 SITE14  2021 Jun               15.0
+5 SITE1   2019 Dec               14.8</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -195,15 +209,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
 <span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.major =</span> <span class="fu">element_blank</span>() <span class="co">#blanking out the gridlines on the plot</span></span>
 <span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
-ℹ Please use `linewidth` instead.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: A numeric `legend.position` argument in `theme()` was deprecated in ggplot2
-3.5.0.
-ℹ Please use the `legend.position.inside` argument of `theme()` instead.</code></pre>
-</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -212,7 +217,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>#3]</p>
+</section>
+<section id="section-2" class="level1">
+<h1>3]</h1>
 <p>a.) In this data set, the 1 represents as a nest box that is occupied by a Swift Parrot, and the 0 represents a box that is not occupied by a Swift Parrot. In other words, the 0 and 1 represent whether or not there was a Swift Parrot in a nest box.</p>
 <p>b.) The primary purpose of this study was to analyze the main conservation species of the Swift Parrot, while taking into consideration the competitor species of the Common Starlings and Tree Martins. A nest box occupancy for the Swift Parrot represented a successful recording, and occupancy for other species in nest boxes were recorded as possible negative influences for conservation effectiveness.</p>
 <p>c.) The years/seasons that are compared in this study are 2016 and 2019. The season/year of 2016 represents the breeding season including the Swift Parrots, and 2019 represents the season without the swift parrots.</p>
@@ -261,18 +268,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 <p>e.)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>occdist <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"../data/occdist.csv"</span>) <span class="co">#loading and renaming data</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(occdist) <span class="ot">&lt;-</span> <span class="fu">make.names</span>(<span class="fu">names</span>(occdist)) <span class="co">#cleaning the column names</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>occdist<span class="sc">$</span>season <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(occdist<span class="sc">$</span>season) <span class="co">#making season a cateogirical predictor</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>model1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(sp <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> occdist, <span class="at">family =</span> binomial) <span class="co">#null</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>model2 <span class="ot">&lt;-</span> <span class="fu">glm</span>(sp <span class="sc">~</span> season <span class="sc">+</span> edge.distance, <span class="at">data =</span> occdist, <span class="at">family =</span> binomial) <span class="co">#full model</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>model3 <span class="ot">&lt;-</span> <span class="fu">glm</span>(sp <span class="sc">~</span> season, <span class="at">data =</span> occdist, <span class="at">family =</span> binomial) <span class="co">#only season</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>model4 <span class="ot">&lt;-</span> <span class="fu">glm</span>(sp <span class="sc">~</span> edge.distance, <span class="at">data =</span> occdist, <span class="at">family =</span> binomial) <span class="co">#only distance</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>occdist <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"../data/occdist.csv"</span>) <span class="co">#loading and renaming data</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(occdist) <span class="ot">&lt;-</span> <span class="fu">make.names</span>(<span class="fu">names</span>(occdist)) <span class="co">#cleaning the column names</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>occdist<span class="sc">$</span>season <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(occdist<span class="sc">$</span>season) <span class="co">#making season a cateogirical predictor</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>model1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(sp <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> occdist, <span class="at">family =</span> binomial) <span class="co">#null</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>model2 <span class="ot">&lt;-</span> <span class="fu">glm</span>(sp <span class="sc">~</span> season <span class="sc">+</span> edge.distance, <span class="at">data =</span> occdist, <span class="at">family =</span> binomial) <span class="co">#full model</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>model3 <span class="ot">&lt;-</span> <span class="fu">glm</span>(sp <span class="sc">~</span> season, <span class="at">data =</span> occdist, <span class="at">family =</span> binomial) <span class="co">#only season</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>model4 <span class="ot">&lt;-</span> <span class="fu">glm</span>(sp <span class="sc">~</span> edge.distance, <span class="at">data =</span> occdist, <span class="at">family =</span> binomial) <span class="co">#only distance</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>f.)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#making plots for each model</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">simulateResiduals</span>(model1) <span class="sc">|&gt;</span> <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#making plots for each model</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">simulateResiduals</span>(model1) <span class="sc">|&gt;</span> <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -280,7 +287,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">simulateResiduals</span>(model2) <span class="sc">|&gt;</span> <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">simulateResiduals</span>(model2) <span class="sc">|&gt;</span> <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -288,7 +295,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">simulateResiduals</span>(model3) <span class="sc">|&gt;</span> <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">simulateResiduals</span>(model3) <span class="sc">|&gt;</span> <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -296,7 +303,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">simulateResiduals</span>(model4) <span class="sc">|&gt;</span> <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">simulateResiduals</span>(model4) <span class="sc">|&gt;</span> <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -307,8 +314,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>g.)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#model comparison with AIC</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">model.sel</span>(model1, model2, model3, model4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#model comparison with AIC</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">model.sel</span>(model1, model2, model3, model4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Model selection table 
           (Int)   edg.dst ssn df   logLik  AICc delta weight
@@ -321,27 +328,27 @@ Models ranked by AICc(x) </code></pre>
 </div>
 <p>The best model based on Akaike’s Information Criteria is model 2, or the model that includes both season and edge distance as predictor variables in the Swift Parrot nest box occupancy.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#visualizations for each model to see best</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>newdata <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">edge.distance =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">900</span>, <span class="at">by =</span> <span class="dv">50</span>),</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">season =</span> <span class="fu">c</span>(<span class="st">"2016"</span>, <span class="st">"2019"</span>)</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>predictors <span class="ot">&lt;-</span> <span class="fu">predict</span>(model2, newdata, <span class="at">type =</span> <span class="st">"link"</span>, <span class="at">se.fit =</span> <span class="cn">TRUE</span>) <span class="co">#linking the functions</span></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>newdata<span class="sc">$</span>lfit <span class="ot">&lt;-</span> <span class="fu">plogis</span>(predictors<span class="sc">$</span>fit) </span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>newdata<span class="sc">$</span>lower <span class="ot">&lt;-</span> <span class="fu">plogis</span>(predictors<span class="sc">$</span>fit <span class="sc">-</span> <span class="fl">1.96</span> <span class="sc">*</span> predictors<span class="sc">$</span>se.fit) <span class="co">#this is lower confidence interval section</span></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>newdata<span class="sc">$</span>upper <span class="ot">&lt;-</span> <span class="fu">plogis</span>(predictors<span class="sc">$</span>fit <span class="sc">+</span> <span class="fl">1.96</span> <span class="sc">*</span> predictors<span class="sc">$</span>se.fit) <span class="co">#upper confidence interval section</span></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(newdata, <span class="fu">aes</span>(<span class="at">x =</span> edge.distance, <span class="at">y=</span> lfit, <span class="at">color =</span> season)) <span class="sc">+</span></span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="fl">0.8</span>) <span class="sc">+</span> </span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> lower, <span class="at">ymax =</span> upper, <span class="at">fill =</span> season), <span class="at">alpha =</span> <span class="fl">0.2</span>, <span class="at">color =</span> <span class="cn">NA</span>) <span class="sc">+</span></span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Distance to Forest Edge (m)"</span>,</span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Predicted Probability of Swift Parrot Occupancy"</span>,</span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Season"</span>, <span class="at">fill =</span> <span class="st">"Season"</span>) <span class="sc">+</span> </span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>) <span class="sc">+</span> </span>
-<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span></span>
-<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"2016"</span> <span class="ot">=</span> <span class="st">"skyblue"</span>, <span class="st">"2019"</span><span class="ot">=</span> <span class="st">"brown2"</span>)) <span class="sc">+</span> </span>
-<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"2016"</span> <span class="ot">=</span> <span class="st">"skyblue"</span>, <span class="st">"2019"</span><span class="ot">=</span> <span class="st">"brown2"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#visualizations for each model to see best</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>newdata <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">edge.distance =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">900</span>, <span class="at">by =</span> <span class="dv">50</span>),</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">season =</span> <span class="fu">c</span>(<span class="st">"2016"</span>, <span class="st">"2019"</span>)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>predictors <span class="ot">&lt;-</span> <span class="fu">predict</span>(model2, newdata, <span class="at">type =</span> <span class="st">"link"</span>, <span class="at">se.fit =</span> <span class="cn">TRUE</span>) <span class="co">#linking the functions</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>newdata<span class="sc">$</span>lfit <span class="ot">&lt;-</span> <span class="fu">plogis</span>(predictors<span class="sc">$</span>fit) </span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>newdata<span class="sc">$</span>lower <span class="ot">&lt;-</span> <span class="fu">plogis</span>(predictors<span class="sc">$</span>fit <span class="sc">-</span> <span class="fl">1.96</span> <span class="sc">*</span> predictors<span class="sc">$</span>se.fit) <span class="co">#this is lower confidence interval section</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>newdata<span class="sc">$</span>upper <span class="ot">&lt;-</span> <span class="fu">plogis</span>(predictors<span class="sc">$</span>fit <span class="sc">+</span> <span class="fl">1.96</span> <span class="sc">*</span> predictors<span class="sc">$</span>se.fit) <span class="co">#upper confidence interval section</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(newdata, <span class="fu">aes</span>(<span class="at">x =</span> edge.distance, <span class="at">y=</span> lfit, <span class="at">color =</span> season)) <span class="sc">+</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="fl">0.8</span>) <span class="sc">+</span> </span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> lower, <span class="at">ymax =</span> upper, <span class="at">fill =</span> season), <span class="at">alpha =</span> <span class="fl">0.2</span>, <span class="at">color =</span> <span class="cn">NA</span>) <span class="sc">+</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Distance to Forest Edge (m)"</span>,</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Predicted Probability of Swift Parrot Occupancy"</span>,</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Season"</span>, <span class="at">fill =</span> <span class="st">"Season"</span>) <span class="sc">+</span> </span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>) <span class="sc">+</span> </span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"2016"</span> <span class="ot">=</span> <span class="st">"skyblue"</span>, <span class="st">"2019"</span><span class="ot">=</span> <span class="st">"brown2"</span>)) <span class="sc">+</span> </span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"2016"</span> <span class="ot">=</span> <span class="st">"skyblue"</span>, <span class="st">"2019"</span><span class="ot">=</span> <span class="st">"brown2"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -354,17 +361,17 @@ Models ranked by AICc(x) </code></pre>
 <p>Figure 1. Modeled plot predictors showing Swift Parrot next box occupancy as a function of distance from the forest edge in 2019 and 2019. The predicted probabilities from a binomial GLM using season and edge distances as constant predictor variables. Confidence intervals are shown as shaded regions above and below lines. Data source: Stojanovic, Dejan et al.&nbsp;(2021).&nbsp;<em>Do nest boxes breed the target species or its competitors?</em>&nbsp;[Dataset]. Dryad.&nbsp;<a href="https://doi.org/10.5061/dryad.83bk3j9sb" class="uri">https://doi.org/10.5061/dryad.83bk3j9sb</a></p>
 <p>j.)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>testpoints <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">edge.distance =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">900</span>),</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">season =</span> <span class="fu">c</span>(<span class="st">"2016"</span>, <span class="st">"2019"</span>)</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>testpreds <span class="ot">&lt;-</span> <span class="fu">predict</span>(model2, <span class="at">newdata =</span> testpoints, <span class="at">type =</span> <span class="st">"link"</span>, <span class="at">se.fit =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>testpoints<span class="sc">$</span>fit <span class="ot">&lt;-</span> <span class="fu">plogis</span>(testpreds<span class="sc">$</span>fit) <span class="co">#predicting the probabilities</span></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>testpoints<span class="sc">$</span>lower <span class="ot">&lt;-</span> <span class="fu">plogis</span>(testpreds<span class="sc">$</span>fit <span class="sc">-</span> <span class="fl">1.96</span> <span class="sc">*</span> testpreds<span class="sc">$</span>se.fit)</span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>testpoints<span class="sc">$</span>upper <span class="ot">&lt;-</span> <span class="fu">plogis</span>(testpreds<span class="sc">$</span>fit <span class="sc">+</span> <span class="fl">1.96</span> <span class="sc">*</span> testpreds<span class="sc">$</span>se.fit)</span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(testpoints)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>testpoints <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">edge.distance =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">900</span>),</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">season =</span> <span class="fu">c</span>(<span class="st">"2016"</span>, <span class="st">"2019"</span>)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>testpreds <span class="ot">&lt;-</span> <span class="fu">predict</span>(model2, <span class="at">newdata =</span> testpoints, <span class="at">type =</span> <span class="st">"link"</span>, <span class="at">se.fit =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>testpoints<span class="sc">$</span>fit <span class="ot">&lt;-</span> <span class="fu">plogis</span>(testpreds<span class="sc">$</span>fit) <span class="co">#predicting the probabilities</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>testpoints<span class="sc">$</span>lower <span class="ot">&lt;-</span> <span class="fu">plogis</span>(testpreds<span class="sc">$</span>fit <span class="sc">-</span> <span class="fl">1.96</span> <span class="sc">*</span> testpreds<span class="sc">$</span>se.fit)</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>testpoints<span class="sc">$</span>upper <span class="ot">&lt;-</span> <span class="fu">plogis</span>(testpreds<span class="sc">$</span>fit <span class="sc">+</span> <span class="fl">1.96</span> <span class="sc">*</span> testpreds<span class="sc">$</span>se.fit)</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(testpoints)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  edge.distance season        fit      lower     upper
 1             0   2016 0.48063714 0.32674169 0.6382966
@@ -375,9 +382,12 @@ Models ranked by AICc(x) </code></pre>
 </div>
 <p>k.)</p>
 <p>We see that the Swift Parrot nest box occupancy was dependent on the season and distance from the forest edge. In the year of 2016, the probability of occupancy was higher near the forest edge as compared to that in 2019, revealing the difference in the species absence in years.</p>
-<p>#4]</p>
+</section>
+<section id="section-3" class="level1">
+<h1>4]</h1>
 <p>a.)</p>
 <p>The first difference that I can spot is that the visualization used in homework 2 is a box plot format, whereas the affective version in homework 3 is a scatter plot with different trend lines. Additionally, the plot in homework 2 lacks color completely, while the affective visualization utilizes color as one of the key differentiating factors. Although aesthetically the two plots are quite different, the data represented is certaintly very similar. The initial drastic difference in caffeine consumption means lowered by the time of more data collection in homework 3, but the noticeable trend of a higher consumption for exam/homework days is seen on both plots. The mean is consistently higher in homework/exam days, for the exception of one portion of the plot in the affective visualization which contains an overlap of trendlines. This is due to the affective visualization having a more complete set of data than that displayed in homework two, specifically representing the mean caffeine consumption trend line as an average spread out over the duration of the entire 1.5 month study period instead of homework 2’s display of two single mean amounts for each category. The biggest change that I made to my affective visualization was to switch the data/plot appearance in order to create a more lively feel to the display, as the viewer could track the spikes in consumption or smooth curve of intake.</p>
+</section>
 
 </main>
 <!-- /main column -->
